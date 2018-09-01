@@ -99,8 +99,9 @@ tar -cvpzf /root/${FILENAME} --exclude=/root/${FILENAME} --exclude=/media --one-
 s3cmd put /root/${FILENAME} s3://${BUCKET} 2>&1 > /dev/null
 rm -f /root/${FILENAME}
 ```
+
 add cron for weekly backup:
-``0	6	*	*	0	bash /root/backup.sh > /dev/null`
+`0	6	*	*	0	bash /root/backup.sh > /dev/null`
 
 
 
