@@ -7,9 +7,9 @@ Hardware:
 - hard drives
 
 Apps:
-- Plex @ apps.plex.tv
-- Syncthing @ odroid.local/syncthing
-- Transmission @ odroid.local/transmission
+- Plex @ http://odroid.local --> https://apps.plex.tv
+- Syncthing @ http://odroid.local/syncthing
+- Transmission @ http://odroid.local/transmission
 
 ### System
 
