@@ -21,6 +21,7 @@ e.g.
 UUID=db0a76df-ad54-4afd-931c-8829626708ec /media/filme ext4 auto,defaults,nofail 2
 UUID=fb248edb-064b-45a2-97fc-eefd35ff7c5a /media/musik ext4 auto,defaults,nofail 2
 ```
+...where UUID is the one from `blkid /dev/sda1` or `blkid /dev/sdb1`
 
 ### SSH
 
