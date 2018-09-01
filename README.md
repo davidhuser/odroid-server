@@ -84,17 +84,22 @@ add cron:
 `0	8	*	*	*	s3cmd sync /media/musik/music s3://[bucket-name] >/dev/null`
 
 
-#### home folder
+#### system backup
 
-`/root/backup-home.sh` -->
+`/root/backup.sh` -->
 
 ```bash
 #!/bin/bash
-tar -cvpzf /root/backup.tar.gz --exclude=/root/backup.tar.gz --one-file-system /home/david
-s3cmd put /root/backup.tar.gz s3://[bucket-name-2] >/dev/null
+
+DATE_TIME=`date +"%Y-%m-%d_%H-%M-%S"`
+FILENAME="${DATE_TIME}_odroid-backup.tar.gz"
+BUCKET="[bucket-name-2]"
+
+tar -cvpzf /root/${FILENAME} --exclude=/root/${FILENAME} --exclude=/media --one-file-system /
+s3cmd put /root/${FILENAME} s3://${BUCKET} >/dev/null
 ```
-add cron:
-`@daily bash /root/backup-home.sh > /dev/null`
+add cron for weekly backup:
+``0	6	*	*	0	bash /root/backup.sh > /dev/null`
 
 
 
