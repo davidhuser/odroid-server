@@ -49,7 +49,6 @@ PermitEmptyPasswords no
 
 - Install Plex: https://dev2day.de/plex-media-server-arm/ for armv7 - see `uname -i`
 - Enable remote access - set manual port to `80`
-- In router, enable port forwarding (External: 80, Internal: 32400, TCP) to 192.168.X.X
 
 ### syncthing
 
