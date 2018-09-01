@@ -95,8 +95,9 @@ DATE_TIME=`date +"%Y-%m-%d_%H-%M-%S"`
 FILENAME="${DATE_TIME}_odroid-backup.tar.gz"
 BUCKET="[bucket-name-2]"
 
-tar -cvpzf /root/${FILENAME} --exclude=/root/${FILENAME} --exclude=/media --one-file-system /
-s3cmd put /root/${FILENAME} s3://${BUCKET} >/dev/null
+tar -cvpzf /root/${FILENAME} --exclude=/root/${FILENAME} --exclude=/media --one-file-system / 2>&1 > /dev/null
+s3cmd put /root/${FILENAME} s3://${BUCKET} 2>&1 > /dev/null
+rm -f /root/${FILENAME}
 ```
 add cron for weekly backup:
 ``0	6	*	*	0	bash /root/backup.sh > /dev/null`
