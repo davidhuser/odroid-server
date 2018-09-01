@@ -47,7 +47,7 @@ PermitEmptyPasswords no
 ### Plex
 
 - Install Plex: https://dev2day.de/plex-media-server-arm/ for armv7 - see `uname -i`
-- Enable remote access - no manual public port...
+- Enable remote access - set manual port to `80`
 - In router, enable port forwarding (External: 80, Internal: 32400, TCP) to 192.168.X.X
 
 ### syncthing
@@ -115,6 +115,12 @@ events {
 
 http {
 
+	#Upstream to Plex
+	upstream plex_backend {
+		server 127.0.0.1:32400;
+		keepalive 32;
+	}
+	
 	server {
 
 		listen 80;
@@ -132,7 +138,7 @@ http {
 			proxy_pass http://127.0.0.1:9091/transmission/rpc;
 		}
     
-    # syncthing config
+                # syncthing config
 		location /syncthing/ {
 			proxy_set_header Host $host;
 			proxy_set_header X-Real-IP $remote_addr;
@@ -144,6 +150,11 @@ http {
 			proxy_read_timeout 600s;
 			proxy_send_timeout 600s;
 		}
+                
+                # plex config
+		location / {
+			proxy_pass       http://plex_backend;
+		}
 	}
 }
 ```
@@ -152,7 +163,6 @@ http {
 
 - `apt install ufw`
 - `ufw allow ssh`
-- `ufw allow 32400/tcp`
 - `ufw allow www`
 
 Open another ssh session.
