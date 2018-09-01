@@ -88,8 +88,8 @@ add cron:
 
 `/root/backup-home.sh` -->
 
-```#!/bin/bash
-
+```bash
+#!/bin/bash
 tar -cvpzf /root/backup.tar.gz --exclude=/root/backup.tar.gz --one-file-system /home/david
 s3cmd put /root/backup.tar.gz s3://[bucket-name-2] >/dev/null
 ```
