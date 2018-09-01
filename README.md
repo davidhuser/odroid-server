@@ -61,7 +61,7 @@ PermitEmptyPasswords no
 ### Transmission
 
 - Install transmission: `apt install transmission-daemon`
-- edit config `"rpc-whitelist": "127.0.0.1,*.*.*.*",` in `/var/lib/transmission-daemon/.config/transmission-daemon/settings.json` and `incomplete` and `downloads` location
+- edit config `"rpc-whitelist": "127.0.0.1",` in `/var/lib/transmission-daemon/.config/transmission-daemon/settings.json` and `incomplete` and `downloads` location
 - `chown -R debian-transmission: /media/filme/incomplete`
 - `chown -R debian-transmission: /media/filme/downloads`
 
