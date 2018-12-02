@@ -48,7 +48,8 @@ PermitEmptyPasswords no
 ### Plex
 
 - Install Plex: https://dev2day.de/plex-media-server-arm/ for armv7 - see `uname -i`
-- Enable remote access - set manual port to `80`
+- Enable remote access - set manual port to `32400`
+- In router, set port forwarding for ports `32400` to IP of server for TCP connections
 
 ### syncthing
 
@@ -161,6 +162,8 @@ http {
                 # plex config
 		location / {
 			proxy_pass       http://plex_backend;
+                        proxy_set_header Upgrade $http_upgrade;
+                        proxy_set_header Connection "upgrade";			
 		}
 	}
 }
