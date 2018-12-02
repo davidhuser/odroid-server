@@ -174,6 +174,7 @@ http {
 - `apt install ufw`
 - `ufw allow ssh`
 - `ufw allow www`
+- `ufw allow 32400/tcp`
 
 Open another ssh session.
 
